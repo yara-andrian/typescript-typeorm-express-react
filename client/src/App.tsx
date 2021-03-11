@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import FuncComponent from "./components/FuncComponent";
+import { ContactUsForm } from "./components/ContactUs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav } from "react-bootstrap";
 
@@ -45,7 +46,7 @@ function AppRouter() {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <Route path="/" exact component={FuncComponent} />
+      <Route path="/" exact component={ContactUsForm} />
       <Route path="/products/:id" component={Product} />
     </Router>
   );
