@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import FuncComponent from "./components/FuncComponent";
+import ShowPerson from "./components/Something";
 import { ContactUsForm } from "./components/ContactUs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav } from "react-bootstrap";
@@ -26,28 +27,29 @@ function AppRouter() {
     <Router>
       <Nav variant="pills" defaultActiveKey="/home">
         <Nav.Item>
-          <Nav.Link>
-            <Link to="/">Home</Link>
-          </Nav.Link>
+          <Link to="/" className="nav-link" data-testid="xxx">
+            Home
+          </Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link>
-            <Link to="/products/1">First Product</Link>
-          </Nav.Link>
+          <Link to="/products/1" className="nav-link">
+            First Product
+          </Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link>
-            <Link to="/products/2">Second Product</Link>
-          </Nav.Link>
+          <Link to="/products/2" className="nav-link">
+            Second Product
+          </Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
-          </Nav.Link>
+          <Link to="/something" className="nav-link">
+            Something
+          </Link>
         </Nav.Item>
       </Nav>
       <Route path="/" exact component={ContactUsForm} />
       <Route path="/products/:id" component={Product} />
+      <Route path="/something" component={ShowPerson} />
     </Router>
   );
 }

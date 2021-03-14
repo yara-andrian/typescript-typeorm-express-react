@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 // import { IErrors } from "./Form";
 
 type Editor = "textbox" | "multilinetextbox" | "dropdown";
@@ -27,6 +28,14 @@ export const Field: React.FC<IFieldProps<string>> = ({
   options,
   value,
 }) => {
+  const [val, setVal] = useState<string>("");
+
+  const handleChange = (ev: React.FormEvent<HTMLInputElement>) => {
+    ev.preventDefault();
+    const inputtedValue = ev.currentTarget.value;
+    setVal(inputtedValue);
+  };
+
   return (
     <div className="form-group">
       {label && <label htmlFor={id}>{label}</label>}
@@ -34,12 +43,10 @@ export const Field: React.FC<IFieldProps<string>> = ({
       {editor!.toLowerCase() === "textbox" && (
         <input
           id={id}
+          aria-label={label + "-input"}
           type="text"
-          value={value}
-          onChange={
-            (e: React.FormEvent<HTMLInputElement>) =>
-              console.log(e) /* TODO: push change to form values */
-          }
+          value={val}
+          onChange={handleChange}
           onBlur={
             (e: React.FormEvent<HTMLInputElement>) =>
               console.log(e) /* TODO: validate field value */
