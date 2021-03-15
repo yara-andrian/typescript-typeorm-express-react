@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "declarations", "components"]
+  "include": ["src", "declarations", "components", "__tests__"]
 }
